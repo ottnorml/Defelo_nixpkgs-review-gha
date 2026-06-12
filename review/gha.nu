@@ -45,6 +45,14 @@ export def "gha review-inputs" [] {
   $env.INPUTS
   | from json
   | upsert extra-args { default "" }
+  | update extra-args {
+    let args = $"[($in)]" | from nuon
+    if (($args | length) >= 2 and ($args | first) == "pr") {
+      $args | skip 2 | each { $'"($in)"' } | str join " "
+    } else {
+      $in
+    }
+  }
   | update cells -c [
     x86_64-linux
     aarch64-linux
