@@ -6,7 +6,7 @@
 
 const user = document.querySelector("header.GlobalNav button[data-login]")?.getAttribute("data-login") ?? null;
 
-const repo = user ? `${user}/nixpkgs-review-gha` : null;
+const repo = user ? `${user}/Defelo_nixpkgs-review-gha` : null;
 
 const reviewDefaults = ({
   title,
